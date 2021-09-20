@@ -7,7 +7,7 @@ using MarketApp.Services;
 
 namespace MarketApp.Models
 {
-    class Product : Marketable
+    class Product : Marketable 
     {
         private static int _id = 0;
         public string ItemName;

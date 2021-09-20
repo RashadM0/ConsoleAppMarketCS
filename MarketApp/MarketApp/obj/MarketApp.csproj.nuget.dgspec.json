@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mjollnnirr\\Desktop\\New folder\\MarketAppConsole\\MarketApp\\MarketApp\\MarketApp.csproj": {}
+    "C:\\Users\\Mjollnnirr\\Desktop\\ConsoleAppMarketCS\\MarketApp\\MarketApp\\MarketApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mjollnnirr\\Desktop\\New folder\\MarketAppConsole\\MarketApp\\MarketApp\\MarketApp.csproj": {
+    "C:\\Users\\Mjollnnirr\\Desktop\\ConsoleAppMarketCS\\MarketApp\\MarketApp\\MarketApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mjollnnirr\\Desktop\\New folder\\MarketAppConsole\\MarketApp\\MarketApp\\MarketApp.csproj",
+        "projectUniqueName": "C:\\Users\\Mjollnnirr\\Desktop\\ConsoleAppMarketCS\\MarketApp\\MarketApp\\MarketApp.csproj",
         "projectName": "MarketApp",
-        "projectPath": "C:\\Users\\Mjollnnirr\\Desktop\\New folder\\MarketAppConsole\\MarketApp\\MarketApp\\MarketApp.csproj",
+        "projectPath": "C:\\Users\\Mjollnnirr\\Desktop\\ConsoleAppMarketCS\\MarketApp\\MarketApp\\MarketApp.csproj",
         "packagesPath": "C:\\Users\\Mjollnnirr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mjollnnirr\\Desktop\\New folder\\MarketAppConsole\\MarketApp\\MarketApp\\obj\\",
+        "outputPath": "C:\\Users\\Mjollnnirr\\Desktop\\ConsoleAppMarketCS\\MarketApp\\MarketApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

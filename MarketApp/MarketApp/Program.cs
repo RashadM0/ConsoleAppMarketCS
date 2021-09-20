@@ -244,15 +244,13 @@ namespace MarketApp
                 "\n=====================================================" +
                 "\nPress '2' For Return Product from Sale Operation" +
                 "\n=====================================================" +
-                "\nPress '3' For Delete Sale Operation" +
+                "\nPress '3' For Show All Sale Operations" +
                 "\n=====================================================" +
-                "\nPress '4' For Show All Sale Operations" +
+                "\nPress '4' For Show All Sale Operations by Date Range" +
                 "\n=====================================================" +
-                "\nPress '5' For Show All Sale Operations by Date Range" +
-                "\n=====================================================" +
-                "\nPress '6' For Show All Sale Operations by Price Range" +
+                "\nPress '5' For Show All Sale Operations by Price Range" +
                 "\n================================================+====" +
-                "\nPress '7' For Show All Sale Operations by Given Date" +
+                "\nPress '6' For Show All Sale Operations by Given Date" +
                 "\n=====================================================" +
                 "\nPress '0' For Back to Menu" +
                 "\n=====================================================");
@@ -280,9 +278,17 @@ namespace MarketApp
                         Console.Clear();
                         goto MainChoise;
                     case "2":
-                    //return
+                        ReturnProductFromSale(marketable);
+                        Console.WriteLine("Press Any Key for Continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        goto MainChoise;
                     case "3":
-                    //delete
+                        ShowAllSales(marketable);
+                        Console.WriteLine("Press Any Key for Continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        goto MainChoise;
                     case "4":
                     //showall
                     case "5":
@@ -560,8 +566,6 @@ namespace MarketApp
                 product.CountItem -= countItem;
                 Console.Write("Press any Key, If You Want Delete: ");
                 Console.ReadLine();
-                //marketable.products.Remove(marketable.products.Find(product => product.ID == id));
-                //marketable.products.Add(item);
                 Console.Write($"{countItem} of Item is Deleted. ");
                 return;
             }
@@ -769,6 +773,22 @@ namespace MarketApp
                     "Wrong Choise. Try Again: ");
                 goto TryAgain;
             }
+            foreach (var item in marketable.basket)
+            {
+                Console.WriteLine("\n--------Item Detected--------\n");
+                Console.WriteLine("++++++++++++++++++++++++++++++++++++++" +
+                $"\nItem Name: {item.ItemName}" +
+                "\n++++++++++++++++++++++++++++++++++++++" +
+                $"\nPrice: {item.Price + "$"}" +
+                "\n++++++++++++++++++++++++++++++++++++++" +
+                $"\nCategory: {item.Category}" +
+                "\n++++++++++++++++++++++++++++++++++++++" +
+                $"\nItem Left: {item.CountItem}" +
+                "\n++++++++++++++++++++++++++++++++++++++" +
+                $"\nID: {item.ID}\n\n");
+                item.ID = no;
+                break;
+            }
             Console.Write("---------------------------------\nEnter Product Count that You Want Return: ");
             int count;
         TryAgain2:
@@ -787,40 +807,14 @@ namespace MarketApp
                     "Wrong Choise. Try Again: ");
                 goto TryAgain2;
             }
-            //SalesItem salesItem;
             Product product = null;
-            SalesItem salesItem = new SalesItem(product, count);
-            if (marketable.basket.Find(product => salesItem.No == no) == null)
-            {
-                Console.Write("Shopping Cart Is Empty: ");
-            }
-            product = marketable.basket.Find(product => salesItem.No == no);
-            foreach (var item in marketable.basket)
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    Console.WriteLine("\n--------Item Detected--------\n");
-                    Console.WriteLine("++++++++++++++++++++++++++++++++++++++" +
-                    $"\nItem Name: {salesItem.No}" +
-                    "\n++++++++++++++++++++++++++++++++++++++" +
-                    $"\nItem Name: {item.ItemName}" +
-                    "\n++++++++++++++++++++++++++++++++++++++" +
-                    $"\nPrice: {item.Price + "$"}" +
-                    "\n++++++++++++++++++++++++++++++++++++++" +
-                    $"\nCategory: {item.Category}" +
-                    "\n++++++++++++++++++++++++++++++++++++++" +
-                    $"\nItem Left: {item.CountItem -= count}" +
-                    "\n++++++++++++++++++++++++++++++++++++++" +
-                    $"\nID: {item.ID}\n\n");
-                }
-                break;
-            }
+            product = marketable.basket.Find(product => product.ID == no);
             Console.WriteLine("Press Any Key For Return Product");
             Console.ReadLine();
-
             for (int i = 0; i < count; i++)
             {
                 marketable.basket.Remove(product);
+                break;
             }
             if (product.CountItem == count)
             {
@@ -832,12 +826,32 @@ namespace MarketApp
             }
             foreach (Product item in marketable.basket)
             {
-                cashBack += product.Price;
+                cashBack = product.Price * count;
             }
             Console.WriteLine("=================================================");
             Console.WriteLine("Item Succesfully Return");
             Console.WriteLine($"Your Final Cash Back is: {cashBack} $");
             Console.WriteLine(product.date);
+        }
+        static void ShowAllSales(Marketable marketable)
+        {
+            Console.Clear();
+            if (marketable.basket.Count != 0)
+            {
+                foreach (var item in marketable.basket)
+                {
+                    Console.WriteLine($"\n++++++++++++++++++++++++" +
+                $"\nID: {item.ID}" +
+                $"\nItem Name: {item.ItemName}" +
+                $"\nPrice: {item.Price}$" +
+                $"\nCategory: {item.Category}" +
+                $"\nItem Left: {item.CountItem}" +
+                $"\n++++++++++++++++++++++++\n");
+                    break;
+                }
+            }
+            else
+                Console.WriteLine("\n--------Item Not Found--------\n");
         }
         #endregion
     }
